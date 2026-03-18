@@ -1,0 +1,50 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Theory from './pages/Theory';
+import Charts from './pages/Charts';
+import PDFs from './pages/PDFs';
+import Quiz from './pages/Quiz';
+import { motion, AnimatePresence } from 'motion/react';
+
+export default function App() {
+  return (
+    <Router>
+      <div className="min-h-screen">
+        <Navbar />
+        <main>
+          <AnimatePresence mode="wait">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/theory" element={<Theory />} />
+              <Route path="/charts" element={<Charts />} />
+              <Route path="/pdfs" element={<PDFs />} />
+              <Route path="/quiz" element={<Quiz />} />
+            </Routes>
+          </AnimatePresence>
+        </main>
+        
+        {/* Footer */}
+        <footer className="py-12 px-4 border-t border-white/5 mt-20">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-env-purple flex items-center justify-center">
+                <span className="text-white font-bold text-xs">E</span>
+              </div>
+              <span className="font-display font-bold text-lg">EnvEdu</span>
+            </div>
+            <p className="text-slate-500 text-sm">
+              © 2026 Khoa Khoa học Môi trường - Đại học Đồng Tháp.
+            </p>
+            <div className="flex items-center gap-6 text-slate-500 text-sm">
+              <a href="#" className="hover:text-env-green transition-colors">Liên hệ</a>
+              <a href="#" className="hover:text-env-green transition-colors">Thư viện</a>
+              <a href="#" className="hover:text-env-green transition-colors">DThU</a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </Router>
+  );
+}
